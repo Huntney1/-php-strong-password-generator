@@ -28,22 +28,22 @@ error_reporting(E_ALL);
 
 </head>
 <body>
-<form action="index.php" method="get">
+<form action="index_functions.php" method="get">
     Inserisci la lunghezza della password: <input type="number" name="len">
     <input type="submit" value="Genera password">
   </form>
   <?php
+    /* utilizzo la funzione { include } per collegare il file ( functions.php => index_functions.php ) */
+    include 'functions.php';
+
     /* form che riceve la lunghezza della password tramite il metodo { $_GET }. */
     if (isset($_GET['len'])) {
 
         /* Il valore viene convertito in un intero utilizzando la funzione { intval() }. */
         $len = intval($_GET['len']);
 
-        /* viene definita la stringa { $chars } che contiene tutti i caratteri possibili da utilizzare nella password, Includendo lettere minuscole, maiuscole, numeri e simboli speciali. */
-        $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}|;:\'",.<>/?';
-
         /* La funzione { substr() } viene quindi utilizzata per creare una stringa casuale di lunghezza { $len }, estraendo i caratteri dalla stringa { $chars } in ordine casuale, utilizzando la funzione { str_shuffle() }. */
-        $password = substr(str_shuffle($chars), 0, $len);
+        $password = generatePassword($len);
 
         /* con l'istruzione { echo } viene stampato il risultato sulla pagina */
         echo "La tua password casuale: $password";
