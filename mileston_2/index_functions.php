@@ -42,7 +42,7 @@ error_reporting(E_ALL);
         /* Il valore viene convertito in un intero utilizzando la funzione { intval() }. */
         $len = intval($_GET['len']);
 
-        /* La funzione { substr() } viene quindi utilizzata per creare una stringa casuale di lunghezza { $len }, estraendo i caratteri dalla stringa { $chars } in ordine casuale, utilizzando la funzione { str_shuffle() }. */
+        /* Richiamo la funzione { generatePassword }  */
         $password = generatePassword($len);
 
         /* con l'istruzione { echo } viene stampato il risultato sulla pagina */
