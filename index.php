@@ -27,11 +27,16 @@ error_reporting(E_ALL);
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
 </head>
-<body>
-<form action="index.php" method="get">
-    Inserisci la lunghezza della password: <input type="number" name="len">
+<!--  -->
+<body style="background-color: #05254b;">
+<form action="index.php" method="get" style="color: white;">
+    <h1>Strong password generator</h1>
+    <label>Inserisci la lunghezza della password:</label>
+    <input type="number" name="len">
     <input type="submit" value="Genera password">
-  </form>
+  
+</form>
+
   <?php
     /* form che riceve la lunghezza della password tramite il metodo { $_GET }. */
     if (isset($_GET['len'])) {
@@ -39,12 +44,13 @@ error_reporting(E_ALL);
         /* Il valore viene convertito in un intero utilizzando la funzione { intval() }. */
         $len = intval($_GET['len']);
 
-        /* viene definita la stringa { $chars } che contiene tutti i caratteri possibili da utilizzare nella password, Includendo lettere minuscole, maiuscole, numeri e simboli speciali. */
+        /* viene definita la stringa { $chars } che contiene tutti i caratteri possibili da utilizzare
+            nella password, Includendo lettere minuscole, maiuscole, numeri e simboli speciali. */
         $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=+[]{}|;:\'",.<>/?';
 
         /* La funzione { substr() } viene quindi utilizzata per creare una stringa casuale di lunghezza { $len }, estraendo i caratteri dalla stringa { $chars } in ordine casuale, utilizzando la funzione { str_shuffle() }. */
         $password = substr(str_shuffle($chars), 0, $len);
-
+    
         /* con l'istruzione { echo } viene stampato il risultato sulla pagina */
         echo "La tua password casuale: $password";
     }
